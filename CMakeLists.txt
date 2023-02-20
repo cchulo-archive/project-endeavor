@@ -22,11 +22,11 @@ message("runtime output directory: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
 # Conan setup
 message("discovering conan binaries")
-include(${PROJECT_SOURCE_DIR}/bin/conan/conanbuildinfo.cmake)
+include(${PROJECT_SOURCE_DIR}/build/conan/conanbuildinfo.cmake)
 conan_basic_setup(NO_OUTPUT_DIRS) # We do not want conan to modify output directories
 
 # Find locally installed packages
-find_package(Vulkan REQUIRED)
+#find_package(Vulkan REQUIRED)
 
 # List of targets to generate build files
 set(APP_TARGETS HelloTriangleApp CosmosVk)
@@ -34,9 +34,9 @@ set(APP_TARGETS HelloTriangleApp CosmosVk)
 foreach (X IN LISTS APP_TARGETS)
     message("generating ${X}")
     add_executable(${X} app/${X}/main.cpp)
-    target_link_libraries(${X} ${CONAN_LIBS} Vulkan::Vulkan)
+    target_link_libraries(${X} ${CONAN_LIBS})
 
-    set(X_BUILD_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${X}")
+    set(X_BUILD_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${X}")
 
     # Each executable will be in its own folder
     set_target_properties(

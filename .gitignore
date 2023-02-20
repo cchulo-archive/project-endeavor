@@ -1,6 +1,7 @@
 # Build directories
 cmake-build-*
 bin/
+build/
 
 # Conan files (depends how conan is configured)
 conan.lock
