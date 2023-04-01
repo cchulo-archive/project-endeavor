@@ -26,7 +26,7 @@ include(${PROJECT_SOURCE_DIR}/build/conan/conanbuildinfo.cmake)
 conan_basic_setup(NO_OUTPUT_DIRS) # We do not want conan to modify output directories
 
 # Find locally installed packages
-#find_package(Vulkan REQUIRED)
+find_package(Vulkan REQUIRED)
 
 # List of targets to generate build files
 set(APP_TARGETS HelloTriangleApp CosmosVk)
@@ -34,7 +34,7 @@ set(APP_TARGETS HelloTriangleApp CosmosVk)
 foreach (X IN LISTS APP_TARGETS)
     message("generating ${X}")
     add_executable(${X} app/${X}/main.cpp)
-    target_link_libraries(${X} ${CONAN_LIBS})
+    target_link_libraries(${X} Vulkan::Vulkan ${CONAN_LIBS})
 
     set(X_BUILD_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}/${X}")
 
