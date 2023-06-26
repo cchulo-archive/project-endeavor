@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
 # General build settings
-project(ProjectEndeavor)
+project(AetherCoreEngine)
 set(CMAKE_CXX_STANDARD 20)
 
 # Echo system/build information
@@ -21,9 +21,9 @@ message("cmake binary directory: ${CMAKE_BINARY_DIR}")
 message("runtime output directory: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
 # Conan setup
-message("discovering conan binaries")
-include(${PROJECT_SOURCE_DIR}/build/conan/conanbuildinfo.cmake)
-conan_basic_setup(NO_OUTPUT_DIRS) # We do not want conan to modify output directories
+#message("discovering conan binaries")
+#include(${PROJECT_SOURCE_DIR}/build/conan/conanbuildinfo.cmake)
+#conan_basic_setup(NO_OUTPUT_DIRS) # We do not want conan to modify output directories
 
 # Find locally installed packages
 find_package(Vulkan REQUIRED)
